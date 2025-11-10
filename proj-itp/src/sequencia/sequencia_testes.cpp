@@ -1,5 +1,5 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
-#include "../mapa/doctest.h"
+#include "../../doctest.h"
 #include "sequencia.h"
 
 
