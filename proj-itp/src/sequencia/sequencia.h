@@ -38,6 +38,7 @@ class Sequencia {
         if (tamanho >= capacidade) {
             ajustaCapacidade();
         }
+        
         dados[tamanho] = valor;
         tamanho++;
     }
@@ -55,4 +56,9 @@ class Sequencia {
         }
         tamanho--;
     }
+
+    T operator[](int index) {
+        return obterElemento(index);
+    }
+
 };

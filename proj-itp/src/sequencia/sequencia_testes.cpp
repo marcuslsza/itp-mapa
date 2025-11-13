@@ -29,7 +29,7 @@ TEST_CASE("Testa a remoção de elementos de uma sequência") {
 }
 
 
-/*
+
 TEST_CASE("Testa o redimensionamento da sequência") {
     Sequencia<int> seq;
     for (int i = 0; i < 100; i++) {
@@ -39,6 +39,8 @@ TEST_CASE("Testa o redimensionamento da sequência") {
     CHECK(seq.obterTamanho() == 100);
     CHECK(seq[99] == 99);
 }
+
+
 
 TEST_CASE("Testa a alteração de elementos via operador[]") {
     Sequencia<int> seq;
@@ -51,6 +53,8 @@ TEST_CASE("Testa a alteração de elementos via operador[]") {
     CHECK(seq[1] == 30);
 }
 
+
+/*
 TEST_CASE("Testa a criação de uma sequência de strings") {
     Sequencia<std::string> seq;
     seq.adicionar("hello");
