@@ -9,7 +9,7 @@ class Sequencia {
     
     void ajustaCapacidade() {
         capacidade *= 2;
-        int *novo = new int[capacidade];
+        T *novo = new T[capacidade];
         for(int i = 0; i<tamanho; i++) {
             novo[i] = dados[i];
 
@@ -23,7 +23,7 @@ class Sequencia {
     Sequencia(int cap = 2) {
         capacidade = cap;
         tamanho = 0;
-        dados = new int[capacidade];
+        dados = new T[capacidade];
     }
 
     ~Sequencia() {
@@ -34,7 +34,7 @@ class Sequencia {
         return tamanho;
     }
 
-    void adicionar(int valor) {
+    void adicionar(T valor) {
         if (tamanho >= capacidade) {
             ajustaCapacidade();
         }
@@ -57,8 +57,8 @@ class Sequencia {
         tamanho--;
     }
 
-    T operator[](int index) {
-        return obterElemento(index);
+    T& operator[] (int index) {
+        return dados[index];
     }
 
 };

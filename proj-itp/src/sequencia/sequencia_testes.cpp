@@ -54,7 +54,7 @@ TEST_CASE("Testa a alteração de elementos via operador[]") {
 }
 
 
-/*
+
 TEST_CASE("Testa a criação de uma sequência de strings") {
     Sequencia<std::string> seq;
     seq.adicionar("hello");
@@ -64,4 +64,3 @@ TEST_CASE("Testa a criação de uma sequência de strings") {
     CHECK(seq[0] == "hello");
     CHECK(seq[1] == "world");
 }
-*/
