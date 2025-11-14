@@ -6,10 +6,19 @@ struct Pixel{
 };
 
 class Matriz{
-    int largura, altura; //capacidade
-    int linhas, colunas; //tamanho
+    int linhas;
+    int colunas;
+
+    //criando uma "matriz" de forma linear
+    int *valores;
 
     public:
+
+    Matriz(int l, int c){
+        linhas = l;
+        colunas = c;
+        int valores[linhas*colunas];
+    }
 
     int obterTamanho(){
         return (linhas*colunas);
