@@ -68,8 +68,8 @@ class Paleta {
     }
 
     void adicionarCor(Cor cor){
-        cores[tamanho] = cor;
-        tamanho++;
+        cores.adicionar(cor);
+        tamanho = cores.obterTamanho();
     }
 
     Cor obterCor(int index){
