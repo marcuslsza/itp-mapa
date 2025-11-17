@@ -1,23 +1,30 @@
 #pragma once
 #include "../paleta/paleta.h"
 
+
 struct Pixel{
     int r, g, b;
 };
 
+
 class Matriz{
-    int linhas;
-    int colunas;
+    int linhas; //altura maximo
+    int colunas; //largura maxima
 
     //criando uma "matriz" de forma linear
-    int *valores;
+    Pixel *valores;
 
     public:
+    Matriz() = default;
 
     Matriz(int l, int c){
         linhas = l;
         colunas = c;
-        int valores[linhas*colunas];
+        valores = new Pixel[l*c];
+    }
+
+    ~Matriz() {
+        delete[] valores;
     }
 
     int obterTamanho(){
@@ -27,12 +34,14 @@ class Matriz{
 };
 
 class Imagem{
-    int largura;
-    int altura;
-    Sequencia<Pixel> pixels;
+    int largura = 1;
+    int altura = 1;
+    Matriz pixels;
 
     public:
     
+    Imagem() = default;
+
     Imagem(int alt, int larg)
     {
         largura = larg;
@@ -49,8 +58,9 @@ class Imagem{
         return largura;
     }
 
-    Pixel& operator= (Pixel pixel)
+    Pixel& operator() (int l, int c)
     {
-        pixels.adicionar(pixel);
+        int indice = (l*altura)+c;
+        return pixels[indice];
     }
 };
