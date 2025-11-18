@@ -89,7 +89,6 @@ class Imagem{
             std::getline(nomeArquivo, tipoImagem);
             nomeArquivo >> largura >> altura;
             nomeArquivo >> maxCor;
-            nomeArquivo >> 
         }
     }
 
