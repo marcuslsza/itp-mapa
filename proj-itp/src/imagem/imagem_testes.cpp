@@ -1,5 +1,5 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
-#include "../doctest.h"
+#include "../../../doctest.h"
 #include "imagem.h"
 
 TEST_CASE("Testa a criação de uma imagem com largura e altura específicas") {
@@ -18,6 +18,7 @@ TEST_CASE("Testa a modificação e acesso aos pixels da imagem") {
     CHECK(pixel.g == 0);
     CHECK(pixel.b == 0);
 }
+
 
 TEST_CASE("Testa a leitura de uma imagem em formato PPM") {
     Imagem img;
