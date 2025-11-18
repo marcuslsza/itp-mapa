@@ -9,7 +9,7 @@ TEST_CASE("Testa a criação de uma imagem com largura e altura específicas") {
 }
 
 TEST_CASE("Testa a modificação e acesso aos pixels da imagem") {
-    Imagem img<Pixel>(10, 10);
+    Imagem img(10, 10);
     Pixel vermelho = {255, 0, 0};
     img(5, 5) = vermelho; 
 
