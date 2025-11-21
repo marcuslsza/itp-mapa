@@ -19,7 +19,6 @@ TEST_CASE("Testa a modificação e acesso aos pixels da imagem") {
     CHECK(pixel.b == 0);
 }
 
-/*
 TEST_CASE("Testa a leitura de uma imagem em formato PPM") {
     Imagem img;
     bool sucesso = img.lerPPM("imagem.ppm");
@@ -46,6 +45,7 @@ TEST_CASE("Testa a leitura de uma imagem em formato PPM") {
     CHECK(p4.r == 255);
     CHECK(p4.g == 255);
     CHECK(p4.b == 255);
+
 }
 
 TEST_CASE("Testa a salvamento da imagem em formato PPM") {
@@ -61,7 +61,7 @@ TEST_CASE("Testa a salvamento da imagem em formato PPM") {
     // Verifica se o arquivo foi criado corretamente
     std::ifstream arquivo("teste.ppm");
     CHECK(arquivo.is_open());
-
+/*
     std::string conteudo;
     std::getline(arquivo, conteudo);
     CHECK(conteudo == "P3");
@@ -80,5 +80,5 @@ TEST_CASE("Testa a salvamento da imagem em formato PPM") {
     CHECK(conteudo == "255 255 0");
 
     arquivo.close();
-}
 */
+}
