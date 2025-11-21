@@ -122,7 +122,17 @@ class Imagem{
         arquivo << largura << " " << altura << std:: endl;
         arquivo << maxCor << std:: endl;
 
-        return true;
+        int posicaoMatLin = 0;
+        for(int i = 0; i < altura; i++){
+            for(int j = 0; j < largura; j++){
+                arquivo << (*pixels)[posicaoMatLin].r << " ";
+                arquivo << (*pixels)[posicaoMatLin].g << " ";
+                arquivo << (*pixels)[posicaoMatLin].b;
 
+                arquivo << std::endl;
+                posicaoMatLin++;
+            }
+        }
+        return true;
     }
 };

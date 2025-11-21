@@ -61,7 +61,7 @@ TEST_CASE("Testa a salvamento da imagem em formato PPM") {
     // Verifica se o arquivo foi criado corretamente
     std::ifstream arquivo("teste.ppm");
     CHECK(arquivo.is_open());
-/*
+
     std::string conteudo;
     std::getline(arquivo, conteudo);
     CHECK(conteudo == "P3");
@@ -80,5 +80,5 @@ TEST_CASE("Testa a salvamento da imagem em formato PPM") {
     CHECK(conteudo == "255 255 0");
 
     arquivo.close();
-*/
+    
 }
