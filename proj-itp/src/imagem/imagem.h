@@ -39,18 +39,23 @@ class Matriz{
         return (linhas*colunas);
     }
 
-    Pixel& operator[] (int index)
+    Pixel& obterElemento(int index)
     {
         return valores[index];
     }
+    
+    //Pixel& operator[] (int index)
+    //{
+        //return valores[index];
+    //}
 
 };
 
 class Imagem{
-    int largura = 1;
-    int altura = 1;
-    int maxCor = 1;
-    Matriz pixels;
+    int largura = 0;
+    int altura = 0;
+    int maxCor = 0;
+    Matriz *pixels = nullptr;
 
     public:
 
@@ -62,11 +67,12 @@ class Imagem{
     {
         largura = larg;
         altura = alt;
+        pixels = new Matriz(larg*alt);
     }
 
     ~Imagem()
     {
-        //delete[] pixels.
+        delete pixels;
     }
     
     int obterAltura()
@@ -82,32 +88,32 @@ class Imagem{
     Pixel& operator() (int l, int c)
     {
         int indice = (l*altura)+c;
-        return pixels[indice];
+        return pixels->obterElemento(indice);
     }
-
-    
-    void lerPPMcabecalho(std::string arquivo)
-    {
-        std::ifstream nomeArquivo(arquivo);
-        std::string tipoImagem = "";
-        
-        if (nomeArquivo.is_open())
-        {
-            std::getline(nomeArquivo, tipoImagem);
-            nomeArquivo >> largura >> altura;
-            nomeArquivo >> maxCor;
-        }
-    }
-
-    void lerPPMcores(std::string arquivo)
-    {
-
-    }
-    
-    
+     
     bool lerPPM(std::string arquivo)
     {
-        lerPPMcabecalho(arquivo);
-        lerPPMcores(arquivo);
+        std::ifstream filePPM(arquivo);
+        if(!filePPM.is_open()) return false;
+
+        std:: string tmp = "";
+        std::string tipoPPM = "";
+        int alturaPPM, larguraPPM, intensidadeCorPPM;
+
+        filePPM >> tipoPPM >> larguraPPM >> alturaPPM >> intensidadeCorPPM;
+        
+        while(std::getline(filePPM, tmp))
+        {
+            int cont = 0;
+            for(int i = 0; i < 3; i++)
+            {
+                for(int j = 0; j < 3; j++)
+                {
+                    
+                }
+            }
+            cont++;
+            
+        }
     }
 };
