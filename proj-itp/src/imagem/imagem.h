@@ -30,11 +30,6 @@ class Matriz{
         delete[] valores;
     }
 
-    ~Matriz(){
-        delete[] valores;
-    }
-
-
     int obterTamanho(){
         return (linhas*colunas);
     }
