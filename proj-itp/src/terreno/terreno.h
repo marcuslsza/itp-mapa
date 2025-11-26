@@ -7,7 +7,24 @@
 
 class Terreno{
 
-    Matriz terreno;
+    Matriz<int> *terreno;
 
+    public:
 
+    Terreno(int n){
+        int dimensao =  pow(2, n) + 1;
+        terreno = new Matriz<int>(dimensao, dimensao);
+    }
+
+    ~Terreno() {
+        delete terreno;
+    }
+
+    int obterLargura(){
+        return terreno->obterLargura();
+    }
+
+    int obterProfundidade(){
+        return terreno->obterAltura();
+    }
 };

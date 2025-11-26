@@ -1,5 +1,5 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
-#include "../doctest.h"
+#include "../../../doctest.h"
 #include "terreno.h"
 
 TEST_CASE("Testa a criação de um terreno de uma única célula") {
