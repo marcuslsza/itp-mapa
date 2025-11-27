@@ -3,13 +3,13 @@
 #include "imagem.h"
 
 TEST_CASE("Testa a criação de uma imagem com largura e altura específicas") {
-    Imagem img(100, 50);
+    Imagem<Pixel>img(100, 50);
     CHECK(img.obterLargura() == 100);
     CHECK(img.obterAltura() == 50);
 }
 
 TEST_CASE("Testa a modificação e acesso aos pixels da imagem") {
-    Imagem img(10, 10);
+    Imagem<Pixel> img(10, 10);
     Pixel vermelho = {255, 0, 0};
     img(5, 5) = vermelho; 
 
@@ -20,7 +20,7 @@ TEST_CASE("Testa a modificação e acesso aos pixels da imagem") {
 }
 
 TEST_CASE("Testa a leitura de uma imagem em formato PPM") {
-    Imagem img;
+    Imagem<Pixel> img;
     bool sucesso = img.lerPPM("imagem.ppm");
     CHECK(sucesso);
     CHECK(img.obterLargura() == 3);
@@ -49,7 +49,7 @@ TEST_CASE("Testa a leitura de uma imagem em formato PPM") {
 }
 
 TEST_CASE("Testa a salvamento da imagem em formato PPM") {
-    Imagem img(2, 2);
+    Imagem<Pixel> img(2, 2);
     img(0, 0) = {255, 0, 0};   // vermelho
     img(1, 0) = {0, 255, 0};   // verde
     img(0, 1) = {0, 0, 255};   // azul
@@ -80,5 +80,4 @@ TEST_CASE("Testa a salvamento da imagem em formato PPM") {
     CHECK(conteudo == "255 255 0");
 
     arquivo.close();
-    
 }

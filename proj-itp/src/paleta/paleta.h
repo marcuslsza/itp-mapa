@@ -65,7 +65,7 @@ class Paleta {
     }
 
     int obterTamanho(void){
-        return tamanho;
+        return cores.obterTamanho();
     }
 
     void adicionarCor(Cor cor){

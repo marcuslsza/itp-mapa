@@ -2,25 +2,31 @@
 #include "../paleta/paleta.h"
 #include <fstream>
 #include <string>
+#include <iostream>
 
 struct Pixel{
     int r, g, b;
 };
 
+template <typename T >
 class Matriz{
     int linhas; //altura maxima
     int colunas; //largura maxima
-    Pixel *valores;
+
+    //criando uma "matriz" de forma linear
+    T *valores;
 
     public:
+    
 
-    Matriz(int l = 1, int c = 1){
+    Matriz(int l = 1, int c = 1)
+    {
         linhas = l;
         colunas = c;
-        valores = new Pixel[l*c];
+        valores = new T[l*c];
     }
 
-    ~Matriz(){
+    ~Matriz() {
         delete[] valores;
     }
 
@@ -28,86 +34,106 @@ class Matriz{
         return (linhas*colunas);
     }
 
-    Pixel& operator[](int index){
+    T& obterElemento(int index)
+    {
+        return valores[index];
+    }
+    
+    T& operator[] (int index)
+    {
         return valores[index];
     }
 
 };
 
+template <typename T>
 class Imagem{
     int largura = 0;
     int altura = 0;
     int maxCor = 0;
     std::string ppm = "";
-    Matriz *pixels = nullptr;
+    Matriz<T> *pixels = nullptr;
 
     public:
-    
+
     Imagem() = default;
 
-    Imagem(int larg, int alt){
+    Imagem(int larg, int alt)
+    {
         largura = larg;
         altura = alt;
         maxCor = 255;
         ppm = "P3";
-        pixels = new Matriz(larg, alt);
+        pixels = new Matriz<T>(larg*alt);
     }
 
-    ~Imagem(){
+    ~Imagem()
+    {
         delete pixels;
     }
     
-    int obterAltura(){
+    int obterAltura()
+    {
         return altura;
     }
 
-    int obterLargura(){
+    int obterLargura()
+    {
         return largura;
     }
 
-    Pixel& operator() (int coluna, int linha){ 
-        int indice = (linha*largura)+coluna;
-        return (*pixels)[indice];
+    T& operator() (int c, int l)
+    {
+        int indice = (l*largura)+c;
+        return pixels->obterElemento(indice);
     }
-
-    void redimensionar(int newWidth, int newHeight){
+     
+    void redimensionar(int newWidth, int newHeight)
+    {
         delete pixels;
-        pixels = new Matriz(newWidth, newHeight);
+        pixels = new Matriz<T>(newWidth, newHeight);
         largura = newWidth;
         altura = newHeight;
-    }
+    } 
 
-  
-    bool lerPPM(std::string nomeArquivo){
-        std::ifstream arquivo(nomeArquivo);
-        int novaLargura, novaAltura;
-        int vermelho, verde, azul;
+    bool lerPPM(std::string arquivo)
+    {
+        std::ifstream filePPM(arquivo);
+        if(!filePPM.is_open()) return false;
 
-        if(!(arquivo.is_open())){
-            std::cerr << "Não é possível abrir o arquivo";
-            return false;
+        std::string tipoPPM = "";
+        int alturaPPM, larguraPPM, intensidadeCorPPM;
+
+        filePPM >> tipoPPM >> larguraPPM >> alturaPPM >> intensidadeCorPPM;
+
+        if(alturaPPM != altura || larguraPPM != largura)
+        {
+            redimensionar(larguraPPM, alturaPPM);
         }
 
-        arquivo >> ppm >> novaLargura >> novaAltura >> maxCor;
+		if(ppm != tipoPPM)
+		{
+			ppm = tipoPPM;
+		}
 
-        if((novaLargura != largura) || (novaAltura != altura)){
-            redimensionar(novaLargura, novaAltura);
-        }
-
-        int posicaoMatLin = 0;
-        for(int i = 0; i < altura; i++){
-            for(int j = 0; j < largura; j++){
-                arquivo >> vermelho >> verde >> azul;
-
-                (*pixels)[posicaoMatLin].r = vermelho;
-                (*pixels)[posicaoMatLin].g = verde;
-                (*pixels)[posicaoMatLin].b = azul;
-
-                posicaoMatLin++;
+        int cont = 0;
+        for(int i = 0; i < alturaPPM;i++)
+        {
+            for(int j = 0; j < larguraPPM; j++)
+            {
+                int red, green, blue;
+                filePPM >> red >> green >> blue;
+                
+                this->pixels->obterElemento(cont).r = red;
+                this->pixels->obterElemento(cont).g = green;
+                this->pixels->obterElemento(cont).b = blue;
+                cont++;
             }
         }
+        filePPM.close();
         return true;
     }
+
 
     bool salvarPPM(std::string nomeArquivo){
         
