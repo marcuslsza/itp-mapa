@@ -52,23 +52,22 @@ class Terreno{
         int passos = (dimensao-1)/2;
         float rugosidade = 0.5;
         int variancia = dimensao/2;
-        int deslocamento = (rand() % ((2*variancia) + 1)) - variancia;
 
         while(passos >= 1){
             Diamond(passos, variancia);
-            Square(passos);
+            Square(passos, variancia);
 
             passos /= 2;
-            rugosidade /= 2;
+            variancia = variancia*rugosidade;
         }
     }
 
     void Diamond(int passos, int variancia){
         int media;
         int deslocamento;
-
-        for(int linha = 0; linha < dimensao-1; linha+= 2*passos){
-            for(int coluna = 0; coluna < dimensao-1; coluna+= 2*passos){
+        //laço percorrendo os cantos esquerdos de cada quadrado
+        for(int linha = 0; linha < dimensao-1; linha += 2*passos){
+            for(int coluna = 0; coluna < dimensao-1; coluna += 2*passos){
                 media = ((*this)(linha, coluna) + (*this)(linha, coluna+2*passos) + (*this)(linha+2*passos, coluna) + (*this)(linha+2*passos, coluna+2*passos))/4;
                 deslocamento = (rand() % ((2*variancia) + 1)) - variancia;
                 (*this)(linha+passos, coluna+passos) = media + deslocamento;
@@ -76,8 +75,12 @@ class Terreno{
         }
     }
 
-    void Square(int posicao){
-
+    void Square(int passos, int variancia){
+        for(int linha = 0; linha < dimensao-1; linha += passos){
+            for(int coluna = 0; coluna < dimensao-1; coluna += passos){
+                
+            }
+        }
     }
 
     int obterLargura(){
