@@ -44,6 +44,15 @@ class Matriz{
         return valores[index];
     }
 
+    int obterLargura()
+    {
+        return colunas;
+    }
+
+    int obterAltura()
+    {
+        return linhas;
+    }
 };
 
 template <typename T>
