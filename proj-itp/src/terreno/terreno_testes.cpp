@@ -17,8 +17,8 @@ TEST_CASE("Testa a geração aleatória de altitudes") {
 }
 
 TEST_CASE("Testa o terreno gerado pela seed 10") {
-  srand(10);
   Terreno terreno(2);
+  srand(10);
   CHECK(terreno(0,0) == 5);
   CHECK(terreno(0,2) == 6);
   CHECK(terreno(3,4) == 4);
