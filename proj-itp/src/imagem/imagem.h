@@ -10,7 +10,7 @@ struct Pixel{
 
 template <typename T >
 class Matriz{
-    int linhas; //altura maximo
+    int linhas; //altura maxima
     int colunas; //largura maxima
 
     //criando uma "matriz" de forma linear
@@ -34,11 +34,21 @@ class Matriz{
         return (linhas*colunas);
     }
 
+    int obterLargura(){
+        return colunas;
+    }
+
+    int obterAltura(){
+        return linhas;
+    }
+
     T& obterElemento(int index)
     {
         return valores[index];
     }
     
+<<<<<<< HEAD
+=======
     T& operator[] (int index)
     {
         return valores[index];
@@ -53,6 +63,7 @@ class Matriz{
     {
         return linhas;
     }
+>>>>>>> c751794bcd3d050b9999e79de848f42cd83583d6
 };
 
 template <typename T>
@@ -96,6 +107,7 @@ class Imagem{
         int indice = (l*largura)+c;
         return pixels->obterElemento(indice);
     }
+    
      
     void redimensionar(int newWidth, int newHeight)
     {
@@ -160,9 +172,9 @@ class Imagem{
         int posicaoMatLin = 0;
         for(int i = 0; i < altura; i++){
             for(int j = 0; j < largura; j++){
-                arquivo << (*pixels)[posicaoMatLin].r << " ";
-                arquivo << (*pixels)[posicaoMatLin].g << " ";
-                arquivo << (*pixels)[posicaoMatLin].b;
+                arquivo << this->pixels->obterElemento(posicaoMatLin).r << " "; 
+                arquivo << this->pixels->obterElemento(posicaoMatLin).g << " ";
+                arquivo << this->pixels->obterElemento(posicaoMatLin).b;
 
                 arquivo << std::endl;
                 posicaoMatLin++;

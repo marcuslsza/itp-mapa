@@ -7,6 +7,7 @@
 #include <iostream>
 const float rugosidade = 0.5;
 
+
 class Terreno{
 
     Matriz<int> *terreno;
