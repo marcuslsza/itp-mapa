@@ -20,7 +20,7 @@ class Terreno{
         for(int i = 0; i < (dimensao*dimensao); i++){
             terreno->obterElemento(i) = 0;
         }
-        //srand(time(0));
+        srand(time(0));
         matrizInicial();
     }
 
