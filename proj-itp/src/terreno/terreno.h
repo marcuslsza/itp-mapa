@@ -128,7 +128,15 @@ class Terreno{
         return terreno->obterAltura();
     }
 
-    Imagem<Pixel> geradorImagem(Paleta paleta) {
+    Imagem<Pixel> geradorImagem(Paleta &paleta, int tamImg) {
         
+        int tamanho = pow(2, tamImg) + 1;
+        Imagem<Pixel> img(tamanho, tamanho);
+        
+        for(int i = 0; i < tamanho; i++) {
+            for(int j = 0; j < tamanho; j++) {
+                int celulaAtual = (*this)(i,j);
+            }
+        }
     }
 };

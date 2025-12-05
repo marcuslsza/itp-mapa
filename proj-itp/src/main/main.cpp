@@ -8,7 +8,7 @@ int main(void) {
     int tamanho;
     
     cout << "Nome do arquivo com a paleta de cores: ";
-    cin >> filenamePaleta;
+    cin >> filenamePaleta; // ../paleta/cores.hex
 
     cout << "Tamanho do mapa: ";
     cin >> tamanho;
@@ -19,5 +19,5 @@ int main(void) {
     Paleta paleta(filenamePaleta);
     Terreno terreno(tamanho);
     
-    terreno.geradorImagem(paleta);
+    terreno.geradorImagem(paleta, tamanho);
 }
