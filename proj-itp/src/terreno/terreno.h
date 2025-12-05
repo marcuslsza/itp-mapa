@@ -12,26 +12,6 @@ class Terreno{
 
     Matriz<int> *terreno;
     int dimensao;
-    public:
-
-    Terreno(int n){
-        dimensao =  pow(2, n) + 1;
-        terreno = new Matriz<int>(dimensao, dimensao);
-        for(int i = 0; i < (dimensao*dimensao); i++){
-            terreno->obterElemento(i) = 0;
-        }
-        srand(time(0));
-        matrizInicial();
-    }
-
-    ~Terreno() {
-        delete terreno;
-    }
-
-    int& operator()(int linha, int coluna){
-        int indice = ((linha*dimensao) + coluna);
-        return terreno->obterElemento(indice);
-    }
 
     void matrizInicial(){
         (*this)(0, 0) = rand() % 10; //perguntar a André por que o *this.
@@ -39,15 +19,6 @@ class Terreno{
         (*this)(dimensao - 1, 0) = rand() % 10;
         (*this)((dimensao - 1), (dimensao - 1)) = rand() % 10;
         DiamondSquare();
-    }
-
-    void imprimirMatriz(){
-        for(int i = 0; i < terreno->obterAltura(); i++){
-            for(int j = 0; j < terreno->obterLargura(); j++){
-                std::cout << (*this)(i, j) << " ";
-            }
-            std::cout << std::endl;
-        }
     }
 
     void DiamondSquare(){
@@ -120,11 +91,62 @@ class Terreno{
         }
     }
 
+    public:
+
+    Terreno(int n){
+        dimensao =  pow(2, n) + 1;
+        terreno = new Matriz<int>(dimensao, dimensao);
+        for(int i = 0; i < (dimensao*dimensao); i++){
+            terreno->obterElemento(i) = 0;
+        }
+        srand(time(0));
+        matrizInicial();
+    }
+
+    ~Terreno() {
+        delete terreno;
+    }
+
+    int& operator()(int linha, int coluna){
+        int indice = ((linha*dimensao) + coluna);
+        return terreno->obterElemento(indice);
+    }
+
+
+    void imprimirMatriz(){
+        for(int i = 0; i < terreno->obterAltura(); i++){
+            for(int j = 0; j < terreno->obterLargura(); j++){
+                std::cout << (*this)(i, j) << " ";
+            }
+            std::cout << std::endl;
+        }
+    }
+
     int obterLargura(){
         return terreno->obterLargura();
     }
 
     int obterProfundidade(){
         return terreno->obterAltura();
+    }
+
+
+    Imagem<Pixel> mapaProcedural(Paleta paleta, string novoArquivo, int tamanho){
+        Imagem<Pixel> img(tamanho, tamanho);
+
+        for(int linha = 0; linha < tamanho; linha++){
+            for(int coluna = 0; coluna < tamanho; coluna++){
+                
+
+
+            }
+            
+        }
+        
+
+
+
+
+
     }
 };

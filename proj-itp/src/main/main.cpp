@@ -6,11 +6,11 @@ using namespace std;
 
 int main(void){
 
-    string nomeArquivoPaleta, novoArquivo;
+    string CaminhoPaleta, novoArquivo;
     int tamanhoMapa;
 
     cout << "Digite o nome do arquivo contendo a paleta de cores a ser usada na imagem: \n";
-    cin >> nomeArquivoPaleta;
+    cin >> CaminhoPaleta;
     
 
     cout << "Digite o tamanho do mapa de altitudes: \n";
@@ -21,10 +21,10 @@ int main(void){
     cout << "Digite o nome do novo arquivo PPM a ser salvo: \n";
     cin >> novoArquivo;
 
-
-    Paleta paleta(nomeArquivoPaleta);
+    Paleta paleta(CaminhoPaleta);
     Terreno terreno(tamanhoMapa);
 
+    terreno.mapaProcedural(paleta, novoArquivo, tamanhoMapa);
 
     return 0;
 }
